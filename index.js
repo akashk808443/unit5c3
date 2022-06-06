@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 app.post("/user/create", (req, res) => {
-  fs.readFile("./db.json", "utf-8", (err, data) => {
+  fs.readFile("./db.json", "utf-8", (error, data) => {
     const parsed = JSON.parse(data);
     parsed.users = [...parsed.users, req.body];
 
@@ -29,7 +29,7 @@ app.post("/user/login", (req, res) => {
   }
 
 
-  fs.readFile("./db.json", "utf-8", (err, data) => {
+  fs.readFile("./db.json", "utf-8", (error, data) => {
     const parsed = JSON.parse(data);
     parsed.users = parsed.users.map((el) =>
       req.body.username == el.username && req.body.password == el.password
@@ -52,7 +52,7 @@ app.post("/user/logout", (req, res) => {
 
 app.get("/votes/party/:party", (req, res) => {
   const { party } = req.params;
-  fs.readFile("./db.json", "utf-8", (err, data) => {
+  fs.readFile("./db.json", "utf-8", (error, data) => {
     const parsed = JSON.parse(data);
     parsed.users = parsed.users.filter((el) => el.party === party);
     res.send(JSON.stringify(parsed.users));
@@ -62,7 +62,7 @@ app.get("/votes/party/:party", (req, res) => {
 
 
 app.get("/votes/voters", (req, res) => {
-  fs.readFile("./db.json", "utf-8", (err, data) => {
+  fs.readFile("./db.json", "utf-8", (error, data) => {
     const parsed = JSON.parse(data);
     parsed.users = parsed.users.filter((el) => el.role === "voter");
     res.send(JSON.stringify(parsed.users));
@@ -72,7 +72,7 @@ app.get("/votes/voters", (req, res) => {
 
 app.post("/votes/vote/:user", (req, res) => {
   const { user } = req.params;
-  fs.readFile("./db.json", "utf-8", (err, data) => {
+  fs.readFile("./db.json", "utf-8", (error, data) => {
     const parsed = JSON.parse(data);
     parsed.users = parsed.users.map((t) =>
       t.name == user ? { ...t, votes: 1 } : t
