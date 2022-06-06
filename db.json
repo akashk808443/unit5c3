@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "akash kumar",
+      "role": "candidate",
+      "age": "25",
+      "username": "prakash",
+      "password": "1134",
+      "token": "bec21d00-3540-4556-9d63-ecb7f1cd7068"
+    },
+    {
+      "id": 2,
+      "name": "ram kumar",
+      "role": "voter",
+      "age": 25,
+      "votes": 0,
+      "party": "partyA"
+    }
+  ]
+}
